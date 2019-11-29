@@ -1,0 +1,24 @@
+{
+  "name": "rocketseat-rabbitmq-publisher",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mkspinto/rocketseat-rabbitmq-publisher.git"
+  },
+  "author": "Marcos Oliveira Pinto",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mkspinto/rocketseat-rabbitmq-publisher/issues"
+  },
+  "homepage": "https://github.com/mkspinto/rocketseat-rabbitmq-publisher#readme",
+  "dependencies": {
+    "amqplib": "^0.5.5",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1"
+  }
+}
