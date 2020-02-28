@@ -1,2 +1,7 @@
 # Workshop Rocketseat - RabbitMQ com Dead-Letter
-Projeto desenvolvido para exemplificar a implementação de filas "dead-letter" no RabbitMQ com retentativa de processamento automática
+Projeto desenvolvido em NodeJS com JavaScript para exemplificar a implementação de filas "dead-letter" com RabbitMQ possuindo retentativa de processamento automática das mensagens com falha de processamento.
+
+## Pré-Requisitos:
+> - RabbitMQ rodando localmente (instalado ou com imagem via Docker)
+> - NPM (Node Package Manager)
+> - NodeJS
