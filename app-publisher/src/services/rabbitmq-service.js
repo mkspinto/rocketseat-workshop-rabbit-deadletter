@@ -23,22 +23,30 @@ exports.sendMessage = async (_message) =>
             {
                 if (success)
                 {
-                    ch.bindQueue(config.rabbirMQQueue, config.rabbitMQExchange, config.rabbitMQRoutingKey);
+                    ch.bindQueue(
+                        config.rabbirMQQueue, 
+                        config.rabbitMQExchange, 
+                        config.rabbitMQRoutingKey
+                    );
                 }
 
-                //Publica a mensagem no exchange
-                let jsonMessage = JSON.stringify(_message);
-                ch.publish(config.rabbitMQExchange, config.rabbitMQRoutingKey, new Buffer(jsonMessage), { persistent: true });
-                return "OK";
+                ch.publish(
+                    config.rabbitMQExchange, 
+                    config.rabbitMQRoutingKey, 
+                    new Buffer(JSON.stringify(_message)), 
+                    { persistent: true }
+                );
+
+                console.log("[pubisher] message published with success...")
             });
         });
 
-        //Fecha a conexão
+        //Close connection
         setTimeout(() => 
         { 
             conn.close(); 
         }, 500);
     });
 
-    return "message recived";
+    return "Message published with success";
 }

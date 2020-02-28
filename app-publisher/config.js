@@ -3,11 +3,11 @@ module.exports = {
     rabbirMQConnectionString: "amqp://localhost:5672",
 
     //Queue
-    rabbirMQQueue: "rocketseat-sample.queue",
-    rabbitMQExchange: "rocketseat-sample.exchange",
-    rabbitMQRoutingKey: "rocketseat-sample",
+    rabbirMQQueue: "message.queue",
+    rabbitMQExchange: "message.exchange",
+    rabbitMQRoutingKey: "message",
 
     //Dead Letter
-    rabbitMQDeadLetterExchange: "rocketseat-sample-dead-letter.exchange",
-    rabbitMQDeadLetterRoutingKey: "rocketseat-sample-dead-letter"
+    rabbitMQDeadLetterExchange: "message-dead-letter.exchange",
+    rabbitMQDeadLetterRoutingKey: "message-dead-letter"
 }

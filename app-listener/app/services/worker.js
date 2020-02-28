@@ -9,8 +9,8 @@ amqp.connect(config.rabbitMQConnectionString, function (err, conn)
         let queueDeadLetterOptions = { 
             durable: true,
             arguments : {
-                "x-dead-letter-exchange": "rocketseat-sample.exchange",
-                "x-dead-letter-routing-key": "rocketseat-sample",
+                "x-dead-letter-exchange": "message.exchange",
+                "x-dead-letter-routing-key": "message",
                 "x-queue-type": "classic",
                 "x-message-ttl": 15000
             }
@@ -37,30 +37,19 @@ amqp.connect(config.rabbitMQConnectionString, function (err, conn)
         ch.prefetch(1);
         ch.consume(config.rabbitMQQueue, function (msg)
         {
-            try 
-            {
-                let content = JSON.parse(msg.content.toString());
-                console.log("[worker]["+JSON.parse(content).name+"] new message revieved");                
-            } 
-            catch (error) 
-            {
-                console.log("[worker][invalid message] new message revieved");       
-            }
-
-
             if (!msg.properties.headers["x-death"])
             {
-                console.log("[worker][0] message processed");
+                console.log("[listener][0] try process message...");
                 ch.nack(msg, false, false);
             }
             else
             {
                 let counter = msg.properties.headers["x-death"][0].count;
-                console.log("[worker]["+counter+"] message processed");
+                console.log("[listener]["+counter+"] try process message...");
 
-                if (counter == 5)
+                if (counter == 4)
                 {
-                    console.log("[worker][5] message ignored");
+                    console.log("[listener] retry limit reached...");
                     ch.ack(msg);
                 }
                 else
